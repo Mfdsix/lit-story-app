@@ -1,0 +1,11 @@
+hightlighted-story .story-item:first-child > div {
+  height: 87px;
+  width: 87px;
+}
+
+hightlighted-story .story-item img {
+  height: 80px;
+  width: 80px;
+  object-fit: cover;
+  cursor: pointer;
+}
