@@ -1,7 +1,15 @@
+// customize
+@use 'sass:map';
+@use '../vendors-extensions/colors' as color;
+
+$primary: color.$orange;
+$dark: color.$black;
+
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
 @import '~bootstrap/scss/maps';
 @import '~bootstrap/scss/mixins';
+
 
 @import '~bootstrap/scss/root';
 @import '~bootstrap/scss/utilities';

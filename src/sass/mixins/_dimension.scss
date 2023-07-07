@@ -1,0 +1,4 @@
+@mixin width-height($dim) {
+    width: $dim;
+    height: $dim;
+}

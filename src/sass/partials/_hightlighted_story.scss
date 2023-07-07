@@ -1,11 +1,18 @@
-hightlighted-story .story-item:first-child > div {
-  height: 87px;
-  width: 87px;
-}
+@use '../mixins/dimension' as dim;
 
-hightlighted-story .story-item img {
-  height: 80px;
-  width: 80px;
-  object-fit: cover;
-  cursor: pointer;
+hightlighted-story{
+  .story-item {
+
+    &:first-child{
+      > div {
+        @include dim.width-height(87px);
+      }
+    }
+
+    img{
+      @include dim.width-height(80px);
+      object-fit: cover;
+      cursor: pointer;
+    }
+  }
 }
