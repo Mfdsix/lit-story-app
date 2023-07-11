@@ -1,6 +1,6 @@
-import AuthUtils from '../../utils/auth'
+import AuthUtils from '../utils/auth'
 
-const CheckUserAuth = {
+const AuthMiddleware = {
   excludeRedirectPage: ['login.html', 'register.html'],
 
   checkLoginState() {
@@ -48,4 +48,4 @@ const CheckUserAuth = {
   },
 }
 
-export default CheckUserAuth
+export default AuthMiddleware

@@ -7,14 +7,16 @@ class Button extends LitWithoutShadowDom {
       type: String,
       reflect: true,
     },
+    isLoading: {
+      type: Boolean,
+      reflect: true,
+      attribute: 'loading'
+    }
   };
 
   constructor() {
     super();
     this._checkAvailabilityProperty();
-
-    this.rows = 3;
-    this.required = false;
   }
 
   _checkAvailabilityProperty() {
@@ -24,7 +26,11 @@ class Button extends LitWithoutShadowDom {
   }
 
   render() {
-    return html` <button class="btn btn-primary btn-block">${this.text}</button> `;
+    return html`
+    <button
+      ?disabled=${this.isLoading}
+      class="btn btn-primary text-white btn-block"
+      >${this.text}</button> `;
   }
 }
 

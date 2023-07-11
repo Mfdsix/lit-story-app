@@ -1,3 +1,4 @@
-import './Textarea';
-import './Image';
-import './Button';
+import './Textarea'
+import './Input'
+import './Image'
+import './Button'

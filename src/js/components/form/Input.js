@@ -1,7 +1,7 @@
 import { html, nothing } from 'lit';
 import LitWithoutShadowDom from '../base/LitWithoutShadowDom';
 
-class TextareaInput extends LitWithoutShadowDom {
+class RegularInput extends LitWithoutShadowDom {
   static properties = {
     value: {
       type: String,
@@ -55,15 +55,14 @@ class TextareaInput extends LitWithoutShadowDom {
     return html`
       <div class="form-group">
         ${this.label && html`<label>${this.label}</label>`}
-        <textarea
+        <input
           name=${this.name || nothing}
           class="form-control"
           placeholder=${this.label || nothing}
-          rows=${this.rows || nothing}
           value=${this.value || nothing}
           ?required=${this.required}
           @input=${(e) => (this.value = e.target.value)}
-        ></textarea>
+        />
 
         ${this._validFeedbackTemplate()}
         <div class="invalid-feedback">${this.invalidFeedbackMessage}</div>
@@ -81,4 +80,4 @@ class TextareaInput extends LitWithoutShadowDom {
   }
 }
 
-customElements.define('form-textarea', TextareaInput);
+customElements.define('form-input', RegularInput);

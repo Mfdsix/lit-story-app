@@ -1,47 +1,50 @@
-import '../components/pages/Home';
+import '../components/pages/Home'
+import AuthMiddleware from "../middlewares/auth"
 
 const Home = {
   async init() {
-    await this._draw();
-    this._initializeListener();
+    AuthMiddleware.checkLoginState()
+    
+    await this._draw()
+    this._initializeListener()
   },
 
   async _draw() {
-    const stories = await this._initializeData();
+    const stories = await this._initializeData()
 
-    const hightlightedStory = document.createElement('hightlighted-story');
-    hightlightedStory.setAttribute('stories', stories);
-    const feedStory = document.createElement('feed-story');
-    feedStory.setAttribute('stories', stories);
-    const modalStory = document.createElement('modal-story');
-    modalStory.setAttribute('id', 'storyModal');
-    modalStory.setAttribute('class', 'modal fade');
+    const hightlightedStory = document.createElement('hightlighted-story')
+    hightlightedStory.setAttribute('stories', stories)
+    const feedStory = document.createElement('feed-story')
+    feedStory.setAttribute('stories', stories)
+    const modalStory = document.createElement('modal-story')
+    modalStory.setAttribute('id', 'storyModal')
+    modalStory.setAttribute('class', 'modal fade')
 
-    document.querySelector('main').append(hightlightedStory, feedStory, modalStory);
+    document.querySelector('main').append(hightlightedStory, feedStory, modalStory)
 
-    this._stories = JSON.parse(stories);
+    this._stories = JSON.parse(stories)
   },
 
   async _initializeData() {
     try {
-      const fetchRecords = await fetch('/api/stories.json');
-      return JSON.stringify((await fetchRecords.json()).listStory);
+      const fetchRecords = await fetch('/api/stories.json')
+      return JSON.stringify((await fetchRecords.json()).listStory)
     } catch {
-      return JSON.stringify([]);
+      return JSON.stringify([])
     }
   },
 
   _initializeListener() {
-    const storyModal = document.getElementById('storyModal');
+    const storyModal = document.getElementById('storyModal')
     storyModal.addEventListener('show.bs.modal', (event) => {
-      const button = event.relatedTarget;
+      const button = event.relatedTarget
       const dataRecord = this._stories.find((item) => {
-        return item.id == button.dataset.recordId;
-      });
+        return item.id == button.dataset.recordId
+      })
 
-      storyModal.setAttribute('story', JSON.stringify(dataRecord));
-    });
+      storyModal.setAttribute('story', JSON.stringify(dataRecord))
+    })
   },
-};
+}
 
-export default Home;
+export default Home
