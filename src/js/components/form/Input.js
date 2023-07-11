@@ -7,10 +7,6 @@ class RegularInput extends LitWithoutShadowDom {
       type: String,
       reflect: true,
     },
-    rows: {
-      type: Number,
-      reflect: true,
-    },
     label: {
       type: String,
       reflect: true,
@@ -41,7 +37,6 @@ class RegularInput extends LitWithoutShadowDom {
     super();
     this._checkAvailabilityProperty();
 
-    this.rows = 3;
     this.required = false;
   }
 

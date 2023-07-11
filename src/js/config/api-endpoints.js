@@ -1,14 +1,12 @@
-import Config from './config';
-
 const ApiEndpoint = {
     // auth endpoints
-    REGISTER: `${Config.BASE_URL}/register`,
-    LOGIN: `${Config.BASE_URL}/login`,
+    REGISTER: `/register`,
+    LOGIN: `/login`,
 
     // story endpoints
-    GET_ALL_STORIES: `${Config.BASE_URL}/stories`,
-    GET_STORY_BY_ID: (id) => `${Config.BASE_URL}/stories/${id}`,
-    POST_STORY: `${Config.BASE_URL}/stories`
+    GET_ALL_STORIES: `/stories`,
+    GET_STORY_BY_ID: (id) => `/stories/${id}`,
+    POST_STORY: `/stories`
 
 };
 

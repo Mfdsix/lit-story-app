@@ -1,5 +1,10 @@
 import "../../components/pages/Auth/LoginForm"
 import AuthMiddleware from "../../middlewares/auth"
+import AuthRequest from "../../network/auth"
+import AuthUtils from "../../utils/auth"
+import {
+  showErrorMessage, showResponseMessage
+} from "../../utils/error"
 
 const Login = {
     async init() {
@@ -34,11 +39,28 @@ const Login = {
       }, 500)
     },
   
-    _sendPost() {
+    async _sendPost() {
+      const button = document.querySelector('form-button[type="submit"]')
       const formData = this._getFormData()
   
       if (this._validateFormData({ ...formData })) {
-        
+        try{
+          button.setAttribute('loading', true)
+          const { data } = await AuthRequest.login({
+            email: formData.email,
+            password: formData.password
+          })
+
+          if(data.error || !data.loginResult) return showResponseMessage(data)
+
+          AuthUtils.setAuth(data.loginResult)
+          window.location.href = "/"
+        }catch(e){
+          let err = showErrorMessage(e)
+          this._showError(err)
+        }finally{
+          button.removeAttribute('loading')
+        }
       }
     },
   
@@ -58,6 +80,11 @@ const Login = {
       )
   
       return formDataFiltered.length === 0
+    },
+
+    _showError(message){
+      document.querySelector('form-input[name="email"]').setAttribute('invalid-feedback', message)
+      document.querySelector('input[name="email"]').setCustomValidity(message)
     }
 }
 

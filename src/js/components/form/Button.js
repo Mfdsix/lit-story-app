@@ -1,5 +1,5 @@
-import { html, nothing } from 'lit';
-import LitWithoutShadowDom from '../base/LitWithoutShadowDom';
+import { html, nothing } from 'lit'
+import LitWithoutShadowDom from '../base/LitWithoutShadowDom'
 
 class Button extends LitWithoutShadowDom {
   static properties = {
@@ -11,17 +11,22 @@ class Button extends LitWithoutShadowDom {
       type: Boolean,
       reflect: true,
       attribute: 'loading'
+    },
+    type: {
+      reflect: true,
+      type: String
     }
-  };
+  }
 
   constructor() {
-    super();
-    this._checkAvailabilityProperty();
+    super()
+    this._checkAvailabilityProperty()
+    this.type = 'submit'
   }
 
   _checkAvailabilityProperty() {
     if (!this.hasAttribute('text')) {
-      throw new Error(`Atribut "text" harus diterapkan pada elemen ${this.localName}`);
+      throw new Error(`Atribut "text" harus diterapkan pada elemen ${this.localName}`)
     }
   }
 
@@ -29,9 +34,12 @@ class Button extends LitWithoutShadowDom {
     return html`
     <button
       ?disabled=${this.isLoading}
+      type="${this.type}"
       class="btn btn-primary text-white btn-block"
-      >${this.text}</button> `;
+      >
+      ${this.isLoading ? 'loading ...'  : this.text}
+    </button> `
   }
 }
 
-customElements.define('form-button', Button);
+customElements.define('form-button', Button)

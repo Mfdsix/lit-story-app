@@ -5,9 +5,9 @@ const AuthRequest = {
     async register(body) {
         return await HTTPRequest.post(ApiEndpoint.REGISTER, body)
     },
-
+    
     async login(body) {
-        return await axios.post(ApiEndpoint.LOGIN, body)
+        return await HTTPRequest.post(ApiEndpoint.LOGIN, body)
     },
 }
   
