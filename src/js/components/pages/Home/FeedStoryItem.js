@@ -14,7 +14,12 @@ class FeedStoryItem extends LitWithoutShadowDom {
     return html`
       <div class="border-bottom my-5">
         <div>
-          <img src="${this.story.photoUrl}" class="w-100 shadow" />
+          <a
+          data-bs-toggle="modal"
+          data-bs-target="#storyModal"
+          data-record-id="${this.story.id}">
+            <img src="${this.story.photoUrl}" class="w-100 shadow" />
+          </a>
         </div>
         <div class="p-2">
           <h5 class="mb-0">${this.story.name}</h5>

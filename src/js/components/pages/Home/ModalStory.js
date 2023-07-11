@@ -17,7 +17,7 @@ class ModalStory extends LitWithoutShadowDom {
             ${this.story &&
             html`
               <img src="${this.story.photoUrl}" class="w-100" />
-              <h5>${this.story.name}</h5>
+              <h5 class="mt-3 text-center">${this.story.name}</h5>
             `}
           </div>
         </div>

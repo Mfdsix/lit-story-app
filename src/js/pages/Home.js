@@ -1,5 +1,8 @@
 import '../components/pages/Home'
 import AuthMiddleware from "../middlewares/auth"
+import StoryRequest from '../network/story'
+import AuthUtils from '../utils/auth'
+import { showErrorMessage } from '../utils/error'
 
 const Home = {
   async init() {
@@ -10,27 +13,51 @@ const Home = {
   },
 
   async _draw() {
-    const stories = await this._initializeData()
-
+    
     const hightlightedStory = document.createElement('hightlighted-story')
-    hightlightedStory.setAttribute('stories', stories)
     const feedStory = document.createElement('feed-story')
-    feedStory.setAttribute('stories', stories)
     const modalStory = document.createElement('modal-story')
     modalStory.setAttribute('id', 'storyModal')
     modalStory.setAttribute('class', 'modal fade')
-
+    
     document.querySelector('main').append(hightlightedStory, feedStory, modalStory)
-
-    this._stories = JSON.parse(stories)
+    
+    await this._initializeData()
   },
 
   async _initializeData() {
+    const { token } = AuthUtils.getAuth()
+    this.token = token
+    this.page = 1
+    this._stories = []
+
+    this._loadStory()
+  },
+
+  async _loadStory(){
+    const hightlightedStory = document.querySelector("hightlighted-story")
+    const feedStory = document.querySelector("feed-story")
+
     try {
-      const fetchRecords = await fetch('/api/stories.json')
-      return JSON.stringify((await fetchRecords.json()).listStory)
-    } catch {
-      return JSON.stringify([])
+      hightlightedStory.setAttribute('loading', true)
+      feedStory.setAttribute('loading', true)
+
+      const { data } = await StoryRequest(this.token).getAll()
+
+      if(data.error || !data.listStory) return showResponseMessage(data)
+
+      const stories = data.listStory
+      hightlightedStory.setAttribute("stories", JSON.stringify(stories.slice(0, 15)))
+      feedStory.setAttribute("stories", JSON.stringify(stories))
+
+      this._stories = stories
+    } catch(e) {
+      const err = showErrorMessage(e, false)
+      hightlightedStory.setAttribute('error', err)
+      feedStory.setAttribute('error', err)
+    }finally{
+      hightlightedStory.removeAttribute('loading')
+      feedStory.removeAttribute('loading')
     }
   },
 
