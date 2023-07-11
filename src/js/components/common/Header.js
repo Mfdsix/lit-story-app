@@ -26,7 +26,9 @@ class NavApp extends LitWithoutShadowDom {
     return html`
       <nav class="navbar navbar-expand-md navbar-dark bg-dark text-white p-3">
         <div class="container">
-          <span class="navbar-brand">${this.brandName}</span>
+          <span class="navbar-brand">
+            <a href="/">${this.brandName}</a>
+          </span>
 
           <button
             class="navbar-toggler"

@@ -60,7 +60,7 @@ class ImageInput extends LitWithoutShadowDom {
             </a>`
         : html` <a @click=${this._chooseFile}>
             <div class="bg-primary rounded d-flex align-items-center justify-content-center">
-              <img src="${this.src}" style="width: 100%; height: 150px; object-fit: cover" />
+              <img src="${this.src}" style="width: 100%;" class="rounded shadow" />
             </div>
           </a>`}
 

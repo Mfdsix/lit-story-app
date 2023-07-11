@@ -28,7 +28,6 @@ const Home = {
   async _initializeData() {
     const { token } = AuthUtils.getAuth()
     this.token = token
-    this.page = 1
     this._stories = []
 
     this._loadStory()

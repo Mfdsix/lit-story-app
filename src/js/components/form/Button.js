@@ -35,9 +35,13 @@ class Button extends LitWithoutShadowDom {
     <button
       ?disabled=${this.isLoading}
       type="${this.type}"
-      class="btn btn-primary text-white btn-block"
+      class="btn ${!this.isLoading ? 'btn-primary text-white' : 'btn-outline-primary'}"
       >
-      ${this.isLoading ? 'loading ...'  : this.text}
+      ${this.isLoading ? html`
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      `  : this.text}
     </button> `
   }
 }
