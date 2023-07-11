@@ -1,5 +1,6 @@
 import "../../components/pages/Auth/RegisterForm"
 import AuthMiddleware from "../../middlewares/auth"
+import AuthRequest from "../../network/auth"
 
 const Login = {
     async init() {
@@ -34,21 +35,39 @@ const Login = {
       }, 500)
     },
   
-    _sendPost() {
+    async _sendPost() {
       const formData = this._getFormData()
+      const button = document.querySelector('form-button[type="submit"]')
   
       if (this._validateFormData({ ...formData })) {
-        
+        try{
+          button.setAttribute('loading', true)
+          const { data } = await AuthRequest.register({
+            name: formData.name,
+            email: formData.email,
+            password: formData.password
+          })
+
+          if(data.error) return showResponseMessage(data)
+
+          alert(data.message)
+          window.location.href = "/auth/login.html"
+        }catch(e){
+          let err = showErrorMessage(e)
+          this._showError(err)
+        }finally{
+          button.removeAttribute('loading')
+        }
       }
     },
   
     _getFormData() {
-      const username = document.querySelector('input[name="username"]')
+      const name = document.querySelector('input[name="name"]')
       const email = document.querySelector('input[name="email"]')
       const password = document.querySelector('input[name="password"]')
   
       return {
-        username: username.value,
+        name: name.value,
         email: email.value,
         password: password.value,
       }
@@ -60,6 +79,11 @@ const Login = {
       )
   
       return formDataFiltered.length === 0
+    },
+
+    _showError(message){
+      document.querySelector('form-input[name="name"]').setAttribute('invalid-feedback', message)
+      document.querySelector('input[name="name"]').setCustomValidity(message)
     }
 }
 

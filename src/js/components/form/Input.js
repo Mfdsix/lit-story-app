@@ -15,6 +15,9 @@ class RegularInput extends LitWithoutShadowDom {
       type: String,
       reflect: true,
     },
+    type: {
+      type: String
+    },
 
     validFeedbackMessage: {
       attribute: 'valid-feedback',
@@ -52,6 +55,7 @@ class RegularInput extends LitWithoutShadowDom {
         ${this.label && html`<label>${this.label}</label>`}
         <input
           name=${this.name || nothing}
+          type="${this.type || 'text'}"
           class="form-control"
           placeholder=${this.label || nothing}
           value=${this.value || nothing}
