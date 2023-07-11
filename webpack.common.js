@@ -14,9 +14,14 @@ const htmlWebpackConfig = {
   },
 };
 
-const htmlWebpackPages = {
-  Home: 'index',
-  'Post Story': 'post',
+const authPages = {
+  'Register': 'register',
+  'Login': 'login'
+}
+
+const mainPages = {
+  'Home': 'index',
+  'Post Story': 'post'
 };
 
 module.exports = {
@@ -55,10 +60,18 @@ module.exports = {
     ],
   },
   plugins: [
-    ...Object.keys(htmlWebpackPages).map((title) => {
+    ...Object.keys(authPages).map((title) => {
       return new HtmlWebpackPlugin({
         title,
-        filename: `${htmlWebpackPages[title]}.html`,
+        filename: `auth/${authPages[title]}.html`,
+        template: path.resolve(__dirname, `src/views/auth.html`),
+        ...htmlWebpackConfig,
+      });
+    }),
+    ...Object.keys(mainPages).map((title) => {
+      return new HtmlWebpackPlugin({
+        title,
+        filename: `${mainPages[title]}.html`,
         template: path.resolve(__dirname, `src/views/index.html`),
         ...htmlWebpackConfig,
       });
