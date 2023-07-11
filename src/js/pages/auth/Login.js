@@ -45,6 +45,7 @@ const Login = {
   
       if (this._validateFormData({ ...formData })) {
         try{
+          this._showError("")
           button.setAttribute('loading', true)
           const { data } = await AuthRequest.login({
             email: formData.email,
