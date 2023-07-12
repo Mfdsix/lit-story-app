@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+<file target-language="en" source-language="id" original="lit-localize-inputs" datatype="plaintext">
+<body>
+<trans-unit id="se783e544f52715f4">
+  <source>Dibuat dengan ❤ oleh Mfdsix</source>
+  <target>Built with ❤ by Mfdsix</target>
+</trans-unit>
+<trans-unit id="s4220dda46d622211">
+  <source>Valid</source>
+  <target>Valid</target>
+</trans-unit>
+<trans-unit id="s544a90322dc1507e">
+  <source>Masuk Story App</source>
+  <target>Login Story App</target>
+</trans-unit>
+<trans-unit id="s96b6896663f2e20c">
+  <source>Silahkan masuk ke akun anda</source>
+  <target>Login using your account</target>
+</trans-unit>
+<trans-unit id="s8a72db7b6bdb803f">
+  <target>Email Address</target>
+  <source>Alamat Email</source>
+</trans-unit>
+<trans-unit id="s6ece89b7e1fd8520">
+  <target>Invalid Email Address</target>
+  <source>Alamat Email Tidak Valid</source>
+</trans-unit>
+<trans-unit id="sf6e1665c7022a1f8">
+  <source>Password</source>
+  <target>Password</target>
+</trans-unit>
+<trans-unit id="s37c3ef8e8f3bb027">
+  <source>Password Tidak Valid</source>
+  <target>Invalid Password</target>
+</trans-unit>
+<trans-unit id="s45dab30b4d2d3c14">
+  <source>Masuk</source>
+  <target>Login</target>
+</trans-unit>
+<trans-unit id="s1a2d47269020a755">
+  <source>Daftar Story App</source>
+  <target>Register Story App</target>
+</trans-unit>
+<trans-unit id="s000e1b7a5bd2b433">
+  <source>Isi form dibawah untuk mendaftar</source>
+  <target>Fill the form to continue registration</target>
+</trans-unit>
+<trans-unit id="sd8c69511c9f3d14e">
+  <source>Nama Lengkap</source>
+  <target>Fullname</target>
+</trans-unit>
+<trans-unit id="sc2209a09927981fd">
+  <source>Nama Lengkap Tidak Valid</source>
+  <target>Invalid Fullname</target>
+</trans-unit>
+<trans-unit id="sf6fc1a3ab0cdc917">
+  <source>Daftar Sekarang</source>
+  <target>Register Now</target>
+</trans-unit>
+<trans-unit id="hcf2f2027bbb0bcfb">
+  <source>Sudah Punya Akun ?
+                  <x id="0" equiv-text="&lt;a href=&quot;/auth/login.html&quot;&gt;"/>Cus Login!<x id="1" equiv-text="&lt;/a&gt;&#10;                "/></source>
+  <target>Already have account ?
+                  <x id="0" equiv-text="&lt;a href=&quot;/auth/login.html&quot;&gt;"/>Login Here!<x id="1" equiv-text="&lt;/a&gt;&#10;                "/></target>
+</trans-unit>
+<trans-unit id="s38508e02d3366145">
+  <source>Upload Story Kamu</source>
+  <target>Post Your Moment</target>
+</trans-unit>
+<trans-unit id="s392e857053d5b3fd">
+  <source>Gambar</source>
+  <target>Picture</target>
+</trans-unit>
+<trans-unit id="sa1aae79bd4a129db">
+  <source>Gambar Harus Dipilih</source>
+  <target>Invalid Picture</target>
+</trans-unit>
+<trans-unit id="s772ce5f935d58e37">
+  <source>Deskripsi</source>
+  <target>Description</target>
+</trans-unit>
+<trans-unit id="s018c78f42ed728ca">
+  <source>Deskripsi Harus Diisi</source>
+  <target>Invalid Description</target>
+</trans-unit>
+<trans-unit id="sed1638d3a06dc77b">
+  <source>Simpan</source>
+  <target>Save</target>
+</trans-unit>
+<trans-unit id="s965c8b9b7067be50">
+  <source>Memproses...</source>
+  <target>Loading...</target>
+</trans-unit>
+<trans-unit id="h9ab22713e21a5f8e">
+  <source>Belum Punya Akun ?
+                  <x id="0" equiv-text="&lt;a href=&quot;/auth/register.html&quot;&gt;"/>Daftar Dulu Yuk!<x id="1" equiv-text="&lt;/a&gt;&#10;                "/></source>
+  <target>Not have account ?
+                  <x id="0" equiv-text="&lt;a href=&quot;/auth/register.html&quot;&gt;"/>Register Here!<x id="1" equiv-text="&lt;/a&gt;&#10;                "/></target>
+</trans-unit>
+<trans-unit id="s8cf4e0a34b9d016c">
+  <source>Buat Story</source>
+  <target>Post a Story</target>
+</trans-unit>
+</body>
+</file>
+</xliff>

@@ -23,14 +23,7 @@ class Button extends LitWithoutShadowDom {
     super()
     
     updateWhenLocaleChanges(this)
-    this._checkAvailabilityProperty()
     this.type = 'submit'
-  }
-
-  _checkAvailabilityProperty() {
-    if (!this.hasAttribute('text')) {
-      throw new Error(`Atribut "text" harus diterapkan pada elemen ${this.localName}`)
-    }
   }
 
   render() {
@@ -42,7 +35,7 @@ class Button extends LitWithoutShadowDom {
       >
       ${this.isLoading ? html`
       <div class="spinner-border text-primary" role="status">
-        <span class="visually-hidden">${msg(`Loading...`)}</span>
+        <span class="visually-hidden">${msg(`Memproses...`)}</span>
       </div>
       `  : this.text}
     </button> `

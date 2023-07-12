@@ -1,2 +1,3 @@
-import './Header';
-import './Footer';
+import './Header'
+import './Footer'
+import './ChooseLanguage'

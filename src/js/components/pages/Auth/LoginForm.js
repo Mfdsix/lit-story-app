@@ -35,7 +35,7 @@ class LoginForm extends LitWithoutShadowDom {
 
                 <span class="d-block mt-2 text-muted">
                 ${msg(html`Belum Punya Akun ?
-                  <a href="/auth/register.html">Daftar Dulu Yuk!</a>)}
+                  <a href="/auth/register.html">Daftar Dulu Yuk!</a>
                 `)}
                 </span>
             </div>
