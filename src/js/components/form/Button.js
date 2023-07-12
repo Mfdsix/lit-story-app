@@ -1,5 +1,6 @@
-import { html, nothing } from 'lit'
+import { html } from 'lit'
 import LitWithoutShadowDom from '../base/LitWithoutShadowDom'
+import { msg, updateWhenLocaleChanges } from '@lit/localize'
 
 class Button extends LitWithoutShadowDom {
   static properties = {
@@ -20,6 +21,8 @@ class Button extends LitWithoutShadowDom {
 
   constructor() {
     super()
+    
+    updateWhenLocaleChanges(this)
     this._checkAvailabilityProperty()
     this.type = 'submit'
   }
@@ -39,7 +42,7 @@ class Button extends LitWithoutShadowDom {
       >
       ${this.isLoading ? html`
       <div class="spinner-border text-primary" role="status">
-        <span class="visually-hidden">Loading...</span>
+        <span class="visually-hidden">${msg(`Loading...`)}</span>
       </div>
       `  : this.text}
     </button> `

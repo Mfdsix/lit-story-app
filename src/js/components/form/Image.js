@@ -1,5 +1,6 @@
-import { html, nothing } from 'lit';
-import LitWithoutShadowDom from '../base/LitWithoutShadowDom';
+import { html, nothing } from 'lit'
+import LitWithoutShadowDom from '../base/LitWithoutShadowDom'
+import { msg, updateWhenLocaleChanges } from "@lit/localize"
 
 class ImageInput extends LitWithoutShadowDom {
   static properties = {
@@ -30,19 +31,21 @@ class ImageInput extends LitWithoutShadowDom {
       type: Boolean,
       reflect: true,
     },
-  };
+  }
 
   constructor() {
-    super();
-    this._checkAvailabilityProperty();
+    super()
 
-    this.src = '';
-    this.validFeedbackMessage = 'Valid';
+    this._checkAvailabilityProperty()
+    updateWhenLocaleChanges(this)
+
+    this.src = ''
+    this.validFeedbackMessage = msg(`Valid`)
   }
 
   _checkAvailabilityProperty() {
     if (!this.hasAttribute('name')) {
-      throw new Error(`Atribut "name" harus diterapkan pada elemen ${this.localName}`);
+      throw new Error(`Atribut "name" harus diterapkan pada elemen ${this.localName}`)
     }
   }
 
@@ -55,12 +58,12 @@ class ImageInput extends LitWithoutShadowDom {
                 class="bg-primary rounded d-flex align-items-center justify-content-center"
                 style="height: 150px"
               >
-                <i class="bi bi-plus text-white" style="font-size: 48px;"></i>
+                <i class="bi bi-plus text-white" style="font-size: 48px"></i>
               </div>
             </a>`
         : html` <a @click=${this._chooseFile}>
             <div class="bg-primary rounded d-flex align-items-center justify-content-center">
-              <img src="${this.src}" style="width: 100%;" class="rounded shadow" />
+              <img src="${this.src}" style="width: 100%" class="rounded shadow" />
             </div>
           </a>`}
 
@@ -74,45 +77,45 @@ class ImageInput extends LitWithoutShadowDom {
       />
 
       ${this._feedbackTemplate()}
-    `;
+    `
   }
 
   _chooseFile() {
-    const input = document.querySelector(`input[name=${this.name}]`);
-    input.click();
+    const input = document.querySelector(`input[name=${this.name}]`)
+    input.click()
   }
 
   _updatePhotoPreview() {
-    const input = document.querySelector(`input[name=${this.name}]`);
+    const input = document.querySelector(`input[name=${this.name}]`)
 
-    const photo = input.files[0];
-    if (!photo) return;
+    const photo = input.files[0]
+    if (!photo) return
 
-    const reader = new FileReader();
+    const reader = new FileReader()
     reader.onload = (event) => {
-      this.src = event.target.result;
-    };
+      this.src = event.target.result
+    }
 
-    reader.readAsDataURL(photo);
+    reader.readAsDataURL(photo)
   }
 
   _feedbackTemplate() {
-    console.log(this.invalidFeedbackMessage);
-    let validFeedbackTemplate = '';
-    let invalidFeedbackTemplate = '';
+    console.log(this.invalidFeedbackMessage)
+    let validFeedbackTemplate = ''
+    let invalidFeedbackTemplate = ''
     if (this.validFeedbackMessage) {
       validFeedbackTemplate = html`
         <div class="valid-feedback">${this.validFeedbackMessage}</div>
-      `;
+      `
     }
     if (this.invalidFeedbackMessage) {
       invalidFeedbackTemplate = html`
         <div class="invalid-feedback">${this.invalidFeedbackMessage}</div>
-      `;
+      `
     }
 
-    return html`${validFeedbackTemplate}${invalidFeedbackTemplate}`;
+    return html`${validFeedbackTemplate}${invalidFeedbackTemplate}`
   }
 }
 
-customElements.define('form-input-image', ImageInput);
+customElements.define('form-input-image', ImageInput)

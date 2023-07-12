@@ -1,11 +1,13 @@
 import AuthUtils from '../../utils/auth'
 import LitWithoutShadowDom from '../base/LitWithoutShadowDom'
 import { html, nothing } from 'lit'
+import { msg, updateWhenLocaleChanges } from "@lit/localize"
 
 class NavLinks extends LitWithoutShadowDom {
   constructor() {
     super()
     
+    updateWhenLocaleChanges(this)
     const {name} = AuthUtils.getAuth()
     this.name = name
   }
@@ -14,7 +16,7 @@ class NavLinks extends LitWithoutShadowDom {
     return html`
       <ul class="navbar-nav d-flex align-items-center gap-3">
         <li>
-          <a href="/post.html">Buat Story</a>
+          <a href="/post.html">${msg(`Buat Story`)}</a>
         </li>
         <li class="nav-item dropdown">
           <a
